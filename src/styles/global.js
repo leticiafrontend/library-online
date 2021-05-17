@@ -7,7 +7,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
   }
-  textarea{
+  body{
+    background-color: #f1f1f1;
+  }
+  input{
     outline: 0;
   }
   button{
