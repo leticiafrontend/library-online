@@ -17,7 +17,7 @@ export const Container = styled.div`
   align-items: center;
 
   ${({ isOpen }) =>
-    isOpen &&
+    isOpen === true &&
     css`
       animation: ${show} 0.3s ease-out;
     `}
@@ -53,7 +53,7 @@ export const Image = styled.img`
 
 export const Title = styled.h1`
   color: #4c40f7;
-  font-size: 24px;
+  font-size: 18px;
 `;
 
 export const Description = styled.p`
@@ -65,5 +65,12 @@ export const Description = styled.p`
 export const Scroll = styled.div`
   height: 225px;
   overflow: auto;
-  margin: 20px 0 25px;
+  margin: 15px 0 20px;
+  ${(props) =>
+    props.title &&
+    css`
+      height: fit-content;
+      max-height: 50px;
+      margin: 0;
+    `}
 `;

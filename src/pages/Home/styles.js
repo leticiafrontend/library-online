@@ -42,15 +42,27 @@ export const Text = styled.p`
       color: #4c40f7;
       font-weight: 500;
     `}
+
+  ${(props) =>
+    props.warning &&
+    css`
+      color: #ff0000;
+      font-weight: 500;
+    `}
 `;
 
 export const InputSearch = styled.input`
   border: none;
   box-shadow: 0px 3px 10px 0px #00000024;
   color: #00113b;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   padding: 12px 25px 12px 15px;
   width: 370px;
+  ${(props) =>
+    props.pendingInput &&
+    css`
+      border: 1px solid #ff0000;
+    `}
 `;
 
 export const ImageSearch = styled.img`

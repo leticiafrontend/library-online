@@ -19,13 +19,12 @@ export const ButtonStyled = styled.button`
   ${(props) =>
     props.search &&
     css`
-      margin-left: -10px;
       border-radius: 0 10px 10px 0;
     `}
 
   ${(props) =>
     props.more &&
     css`
-      margin: 20px 10px 20px 20px;
+      margin: 20px 15px 20px 15px;
     `}
 `;
