@@ -17,7 +17,7 @@ export const Container = styled.div`
   align-items: center;
 
   ${({ isOpen }) =>
-    isOpen === true &&
+    isOpen &&
     css`
       animation: ${show} 0.3s ease-out;
     `}
@@ -66,8 +66,8 @@ export const Scroll = styled.div`
   height: 225px;
   overflow: auto;
   margin: 15px 0 20px;
-  ${(props) =>
-    props.title &&
+  ${({ title }) =>
+    title &&
     css`
       height: fit-content;
       max-height: 50px;

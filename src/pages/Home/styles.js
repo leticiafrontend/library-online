@@ -36,15 +36,15 @@ export const Text = styled.p`
   line-height: 24px;
   color: #9f9fa9;
   padding-bottom: 10px;
-  ${(props) =>
-    props.results &&
+  ${({ results }) =>
+    results &&
     css`
       color: #4c40f7;
       font-weight: 500;
     `}
 
-  ${(props) =>
-    props.warning &&
+  ${({ warning }) =>
+    warning &&
     css`
       color: #ff0000;
       font-weight: 500;
@@ -58,8 +58,8 @@ export const InputSearch = styled.input`
   border-radius: 10px 0 0 10px;
   padding: 12px 25px 12px 15px;
   width: 370px;
-  ${(props) =>
-    props.pendingInput &&
+  ${({ pendingInput }) =>
+    pendingInput &&
     css`
       border: 1px solid #ff0000;
     `}

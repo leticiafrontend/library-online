@@ -15,6 +15,7 @@ import booksAndWoman from '../../images/book_and_woman.svg';
 import { Card } from '../../components/Card';
 import { Button } from '../../parts/Button/index';
 import { Spinner } from '../../parts/Spinner';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [valueInput, setValueInput] = useState('');
@@ -53,7 +54,9 @@ export const Home = () => {
   return (
     <Container>
       <DivHeader>
-        <Button text="❤️ Favoritos" />
+        <Link to="/favoritos">
+          <Button text="❤️ Favoritos" />
+        </Link>
       </DivHeader>
       <SearchDiv>
         <DivText>

@@ -27,7 +27,7 @@ export const Modal = (props) => {
             <Description>
               Data de publicação: {date === null ? 'Não informado' : date}
               <br />
-              {description}
+              {description === null ? 'Sem descrição' : description}
             </Description>
           </Scroll>
           <Button text="❤️ Adicionar aos favoritos" />

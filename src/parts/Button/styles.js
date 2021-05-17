@@ -16,14 +16,14 @@ export const ButtonStyled = styled.button`
   &:hover {
     background-color: #00113b;
   }
-  ${(props) =>
-    props.search &&
+  ${({ search }) =>
+    search &&
     css`
       border-radius: 0 10px 10px 0;
     `}
 
-  ${(props) =>
-    props.more &&
+  ${({ more }) =>
+    more &&
     css`
       margin: 20px 15px 20px 15px;
     `}
