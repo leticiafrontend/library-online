@@ -4,7 +4,6 @@ import {
   SearchDiv,
   DivInputSearch,
   InputSearch,
-  Button,
   ImageSearch,
   Title,
   Text,
@@ -14,12 +13,14 @@ import {
 } from './styles';
 import booksAndWoman from '../../images/book_and_woman.svg';
 import { Card } from '../../components/Card';
+import { Modal } from '../../components/Modal';
+import { Button } from '../../parts/Button/index';
 
 export const Home = () => {
   return (
     <Container>
       <DivHeader>
-        <Button>❤️ Favoritos</Button>
+        <Button text="❤️ Favoritos" />
       </DivHeader>
       <SearchDiv>
         <DivText>
@@ -27,9 +28,7 @@ export const Home = () => {
           <Text>Pesquise pelo nome do livro</Text>
           <DivInputSearch>
             <InputSearch type="text" />
-            <Button type="submit" search>
-              Buscar livro
-            </Button>
+            <Button type="submit" search text="Buscar livro" />
           </DivInputSearch>
         </DivText>
         <ImageSearch src={booksAndWoman} />
@@ -37,17 +36,8 @@ export const Home = () => {
       <Text results>23 Resultados para a sua busca</Text>
       <Results>
         <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
       </Results>
+      <Modal />
     </Container>
   );
 };
