@@ -3,11 +3,13 @@ import { Button } from '../../parts/Button/index';
 import { Container, Image, Title } from './styles';
 import imageBlack from '../../images/black.jpeg';
 
-export const Card = () => {
+export const Card = (props) => {
+  const { title, image } = props;
+  console.log(image);
   return (
     <Container>
-      <Image src={imageBlack} />
-      <Title>React Native</Title>
+      <Image src={image === null ? imageBlack : image} />
+      <Title>{title}</Title>
       <Button more text="Ver mais" />
     </Container>
   );

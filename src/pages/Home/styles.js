@@ -18,7 +18,7 @@ export const SearchDiv = styled.div`
   justify-content: space-between;
 `;
 
-export const DivInputSearch = styled.div`
+export const DivInputSearch = styled.form`
   display: flex;
   align-items: center;
 `;
