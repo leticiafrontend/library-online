@@ -23,43 +23,44 @@ export const Home = () => {
   const [resultsApi, setResultsApi] = useState('');
   const [pagination, setPagination] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [erro, setErro] = useState(false);
+  const [error, setError] = useState(false);
   const [pendingInput, setPendingInput] = useState(false);
   const apiKey = 'AIzaSyBNN_gMa_baQXo0kewGhvX_lgmL9GfmFgU';
+
+  const searchAPi = (page) => {
+    const result = valueInput.replaceAll(' ', '+');
+    const resultSearch = `https://www.googleapis.com/books/v1/volumes?q=${result}&maxResults=16&startIndex=${page}&key=${apiKey}`;
+
+    (async () => {
+      const response = await fetch(resultSearch);
+      const results = await response.json();
+
+      results.totalItems === 0 ? setError(true) : setError(false);
+
+      setPendingInput(false);
+      setResultsApi(results);
+      setLoading(false);
+    })();
+  };
 
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
     if (valueInput.length > 0) {
       setLoading(true);
-
-      const result = valueInput.replaceAll(' ', '+');
-      const resultSearch = `https://www.googleapis.com/books/v1/volumes?q=${result}&maxResults=16&startIndex=${pagination}&key=${apiKey}`;
-
-      (async () => {
-        const response = await fetch(resultSearch);
-        const results = await response.json();
-
-        if (results.totalItems === 0) {
-          setErro(true);
-        } else {
-          setErro(false);
-        }
-
-        setPendingInput(false);
-        setResultsApi(results);
-        setLoading(false);
-      })();
+      searchAPi(0);
     } else {
       setPendingInput(true);
     }
   };
 
   const nextPage = () => {
-    console.log('Próxima Página');
+    searchAPi(pagination + 16);
+    setPagination(pagination + 16);
   };
 
   const previousPage = () => {
-    console.log('Página Anterior');
+    searchAPi(pagination - 16);
+    setPagination(pagination - 16);
   };
 
   return (
@@ -127,17 +128,21 @@ export const Home = () => {
                 <Pagination>
                   <Button
                     text="<"
-                    disabled={pagination >= 0 ? true : false}
+                    disabled={pagination <= 0 ? true : false}
                     onClick={previousPage}
                   />
-                  <Button text=">" onClick={nextPage} />
+                  <Button
+                    text=">"
+                    onClick={nextPage}
+                    disabled={resultsApi.totalItems - pagination <= 16}
+                  />
                 </Pagination>
               )}
             </>
           )}
         </>
       )}
-      {erro && <Text warning>Nenhum livro foi encontrado</Text>}
+      {error && <Text warning>Nenhum livro foi encontrado</Text>}
     </Container>
   );
 };

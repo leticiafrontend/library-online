@@ -27,7 +27,9 @@ export const Card = (props) => {
       date: date,
       id: id,
     };
+
     const bookStorage = JSON.parse(localStorage.getItem('favorites'));
+
     bookStorage.push(dataBook);
     setStorage(bookStorage);
     saveStorage(bookStorage);
@@ -36,6 +38,7 @@ export const Card = (props) => {
 
   const removeFavorite = () => {
     const bookStorage = JSON.parse(localStorage.getItem('favorites'));
+
     bookStorage.splice(index, 1);
     setStorage(bookStorage);
     saveStorage(bookStorage);

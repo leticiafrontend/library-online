@@ -36,9 +36,3 @@ export const Results = styled.div`
     gap: 10px;
   }
 `;
-
-export const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  column-gap: 20px;
-`;

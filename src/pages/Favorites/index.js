@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { Button } from '../../parts/Button';
-import { Container, DivHeader, Title, Results, Pagination } from './styles';
+import { Container, DivHeader, Title, Results } from './styles';
 
 export const Favorites = () => {
   const [books, setBooks] = useState([]);
@@ -37,12 +37,6 @@ export const Favorites = () => {
             />
           ))}
         </Results>
-      )}
-      {books.length > 16 && (
-        <Pagination>
-          <Button text="<" />
-          <Button text=">" />
-        </Pagination>
       )}
     </Container>
   );
