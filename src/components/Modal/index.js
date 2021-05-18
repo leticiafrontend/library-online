@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Content,
@@ -12,7 +12,18 @@ import imageBlack from '../../images/black.jpeg';
 import { Button } from '../../parts/Button/index';
 
 export const Modal = (props) => {
-  const { description, image, title, date, isOpen, setIsOpen } = props;
+  const {
+    description,
+    image,
+    title,
+    date,
+    isOpen,
+    setIsOpen,
+    favorite,
+    disabled,
+    isFavorite,
+    remove,
+  } = props;
 
   return (
     isOpen && (
@@ -30,7 +41,15 @@ export const Modal = (props) => {
               {description === null ? 'Sem descrição' : description}
             </Description>
           </Scroll>
-          <Button text="❤️ Adicionar aos favoritos" />
+          <Button
+            onClick={() => (isFavorite ? remove() : favorite())}
+            text={
+              isFavorite
+                ? 'Remover dos favoritos 💔'
+                : 'Adicionar aos favoritos ❤️'
+            }
+            disabled={disabled}
+          />
         </Content>
       </Container>
     )

@@ -10,6 +10,7 @@ import {
   DivText,
   DivHeader,
   Results,
+  Pagination,
 } from './styles';
 import booksAndWoman from '../../images/book_and_woman.svg';
 import { Card } from '../../components/Card';
@@ -20,28 +21,30 @@ import { Link } from 'react-router-dom';
 export const Home = () => {
   const [valueInput, setValueInput] = useState('');
   const [resultsApi, setResultsApi] = useState('');
+  const [pagination, setPagination] = useState(0);
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState(false);
   const [pendingInput, setPendingInput] = useState(false);
-  const urlApi = 'https://www.googleapis.com/books/v1/volumes?q=';
+  const apiKey = 'AIzaSyBNN_gMa_baQXo0kewGhvX_lgmL9GfmFgU';
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     if (valueInput.length > 0) {
       setLoading(true);
 
       const result = valueInput.replaceAll(' ', '+');
-      const resultSearch = urlApi + result;
+      const resultSearch = `https://www.googleapis.com/books/v1/volumes?q=${result}&maxResults=16&startIndex=${pagination}&key=${apiKey}`;
 
       (async () => {
         const response = await fetch(resultSearch);
         const results = await response.json();
-        console.log(results);
+
         if (results.totalItems === 0) {
           setErro(true);
         } else {
           setErro(false);
         }
+
         setPendingInput(false);
         setResultsApi(results);
         setLoading(false);
@@ -49,6 +52,14 @@ export const Home = () => {
     } else {
       setPendingInput(true);
     }
+  };
+
+  const nextPage = () => {
+    console.log('Próxima Página');
+  };
+
+  const previousPage = () => {
+    console.log('Página Anterior');
   };
   console.log(resultsApi);
   return (
@@ -92,6 +103,7 @@ export const Home = () => {
                 {resultsApi.items.map((item, index) => (
                   <Card
                     key={index}
+                    id={item.id}
                     title={item.volumeInfo.title}
                     image={
                       item.volumeInfo.imageLinks
@@ -110,6 +122,16 @@ export const Home = () => {
                     }
                   />
                 ))}
+                {resultsApi.totalItems > 16 && (
+                  <Pagination>
+                    <Button
+                      text="<"
+                      disabled={pagination >= 0 ? true : false}
+                      onClick={previousPage}
+                    />
+                    <Button text=">" onClick={nextPage} />
+                  </Pagination>
+                )}
               </Results>
             </>
           )}

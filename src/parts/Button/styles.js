@@ -16,6 +16,10 @@ export const ButtonStyled = styled.button`
   &:hover {
     background-color: #00113b;
   }
+  &:disabled {
+    background-color: #9f9fa9;
+    cursor: initial;
+  }
   ${({ search }) =>
     search &&
     css`

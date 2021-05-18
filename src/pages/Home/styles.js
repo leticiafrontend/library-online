@@ -78,3 +78,9 @@ export const Results = styled.div`
   row-gap: 30px;
   margin: 30px 0;
 `;
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+`;
