@@ -36,3 +36,11 @@ export const Results = styled.div`
     gap: 10px;
   }
 `;
+
+export const Text = styled.p`
+  font-size: 16px;
+  line-height: 24px;
+  padding-bottom: 10px;
+  color: #ff0000;
+  font-weight: 500;
+`;

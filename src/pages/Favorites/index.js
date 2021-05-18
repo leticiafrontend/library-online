@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { Button } from '../../parts/Button';
-import { Container, DivHeader, Title, Results } from './styles';
+import { Container, DivHeader, Title, Results, Text } from './styles';
 
 export const Favorites = () => {
   const [books, setBooks] = useState([]);
@@ -22,7 +22,7 @@ export const Favorites = () => {
       <div>
         <Title>Livros Favoritos ❤️</Title>
       </div>
-      {books && (
+      {books.length > 0 ? (
         <Results>
           {books.map((item, index) => (
             <Card
@@ -37,6 +37,8 @@ export const Favorites = () => {
             />
           ))}
         </Results>
+      ) : (
+        <Text>Nenhum livro foi marcado como favorito ainda!</Text>
       )}
     </Container>
   );
