@@ -61,7 +61,7 @@ export const Home = () => {
   const previousPage = () => {
     console.log('Página Anterior');
   };
-  console.log(resultsApi);
+
   return (
     <Container>
       <DivHeader>
@@ -122,17 +122,17 @@ export const Home = () => {
                     }
                   />
                 ))}
-                {resultsApi.totalItems > 16 && (
-                  <Pagination>
-                    <Button
-                      text="<"
-                      disabled={pagination >= 0 ? true : false}
-                      onClick={previousPage}
-                    />
-                    <Button text=">" onClick={nextPage} />
-                  </Pagination>
-                )}
               </Results>
+              {resultsApi.totalItems > 16 && (
+                <Pagination>
+                  <Button
+                    text="<"
+                    disabled={pagination >= 0 ? true : false}
+                    onClick={previousPage}
+                  />
+                  <Button text=">" onClick={nextPage} />
+                </Pagination>
+              )}
             </>
           )}
         </>

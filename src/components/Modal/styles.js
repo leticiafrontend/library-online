@@ -21,6 +21,10 @@ export const Container = styled.div`
     css`
       animation: ${show} 0.3s ease-out;
     `}
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+  }
 `;
 
 export const Content = styled.div`
@@ -29,6 +33,13 @@ export const Content = styled.div`
   width: 400px;
   height: 400px;
   border-radius: 0 10px 10px 0;
+  @media (max-width: 680px) {
+    border-radius: 0 0 10px 10px;
+    height: 320px;
+  }
+  @media (max-width: 430px) {
+    width: 240px;
+  }
 `;
 
 export const Close = styled.span`
@@ -49,6 +60,15 @@ export const Image = styled.img`
   height: 400px;
   border-radius: 10px 0 0 10px;
   object-fit: cover;
+  @media (max-width: 680px) {
+    border-radius: 10px 10px 0 0;
+    width: 400px;
+    height: 200px;
+  }
+  @media (max-width: 430px) {
+    width: 240px;
+    height: 150px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -73,4 +93,10 @@ export const Scroll = styled.div`
       max-height: 50px;
       margin: 0;
     `}
+  @media (max-width: 680px) {
+    height: 150px;
+  }
+  @media (max-width: 430px) {
+    height: 120px;
+  }
 `;

@@ -3,6 +3,15 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   max-width: 1200px;
   margin: 50px auto;
+  @media (max-width: 1200px) {
+    max-width: 800px;
+  }
+  @media (max-width: 830px) {
+    margin: 20px 50px;
+  }
+  @media (max-width: 530px) {
+    margin: 20px;
+  }
 `;
 
 export const DivHeader = styled.div`
@@ -21,6 +30,9 @@ export const SearchDiv = styled.div`
 export const DivInputSearch = styled.form`
   display: flex;
   align-items: center;
+  @media (max-width: 530px) {
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.h1`
@@ -63,12 +75,27 @@ export const InputSearch = styled.input`
     css`
       border: 1px solid #ff0000;
     `}
+
+  @media (max-width: 1200px) {
+    width: 270px;
+  }
+
+  @media (max-width: 530px) {
+    width: 100%;
+    border-radius: 10px;
+  }
 `;
 
 export const ImageSearch = styled.img`
   width: 100%;
   max-width: 480px;
   margin: 80px 0;
+  @media (max-width: 1200px) {
+    max-width: 250px;
+  }
+  @media (max-width: 830px) {
+    display: none;
+  }
 `;
 
 export const Results = styled.div`
@@ -76,7 +103,12 @@ export const Results = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 30px;
+  column-gap: 10px;
   margin: 30px 0;
+  @media (max-width: 530px) {
+    justify-content: center;
+    gap: 10px;
+  }
 `;
 
 export const Pagination = styled.div`

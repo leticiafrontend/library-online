@@ -24,6 +24,11 @@ export const ButtonStyled = styled.button`
     search &&
     css`
       border-radius: 0 10px 10px 0;
+      @media (max-width: 530px) {
+        width: 100%;
+        border-radius: 10px;
+        margin: 15px 0 40px;
+      }
     `}
 
   ${({ more }) =>
